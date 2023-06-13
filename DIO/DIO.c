@@ -1,8 +1,23 @@
+/*
+* File: dio.c
+* Author: Hoang Minh Nhan
+* Date: 29/05/2023
+* Description: Day la file .c
+*/
 #include <Dio.h>
 
+/*
+* Function: DIO_WriteChannel
+* Description: Ham xuat muc 1 va 0 ra chan STM32F103C8T6
+* Input:
+*   ChnnelID - Day la bien Dio_ChannelType(Kieu Enum)
+*   Level    - Day la bien Dio_LevelType(Kieu Enum)
+* Output:
+*   none
+*/
 void Dio_WriteChannel (Dio_ChannelType ChannelId,Dio_LevelType Level){
-	  GPIO_TypeDef * gpioPort;
-	  uint16_t gpioPin;
+	  GPIO_TypeDef * gpioPort;  
+	  uint16_t gpioPin; 
 	   switch(ChannelId) {
 			 case DIO_CHANNEL_PA0:
 				 gpioPort = GPIOA;
@@ -49,15 +64,23 @@ void Dio_WriteChannel (Dio_ChannelType ChannelId,Dio_LevelType Level){
 			   gpioPin = GPIO_Pin_13;
 			 break;
 			 }
-	if(Level == STD_LOW) {
-      GPIO_ResetBits(gpioPort,gpioPin);
+	if(Level == STD_LOW) {  
+      GPIO_ResetBits(gpioPort,gpioPin); // Ham xuat muc 0 ra chan STM32F103C8T6
      }
   else {
-     	GPIO_SetBits(gpioPort,gpioPin);
-			 }
+     	GPIO_SetBits(gpioPort,gpioPin);   // Ham xuat muc 1 ra chan STM32F103C8T6
+     }
 }
 		 
-
+/*
+* Function: DIO_ReadChannel
+* Description: Ham doc muc 1 va 0 ra chan STM32F103C8T6
+* Input:
+*   ChnnelID - Day la bien Dio_ChannelType(Kieu Enum)
+* Output:
+*   STD_LOW - Tuong duong muc 0
+*   STD_HIGH - Tuong duong muc 1
+*/
 Dio_LevelType Dio_ReadChannel (Dio_ChannelType ChannelId) {
 	GPIO_TypeDef * gpioPort;
 	uint16_t gpioPin;
@@ -67,7 +90,7 @@ Dio_LevelType Dio_ReadChannel (Dio_ChannelType ChannelId) {
 			   gpioPin = GPIO_Pin_13;
 			 break;
 		}
-	if(GPIO_ReadInputDataBit(gpioPort,gpioPin) == 0) {
+	if(GPIO_ReadInputDataBit(gpioPort,gpioPin) == 0) {  //Ham doc muc logic dau vao 1 hoac 0
 		  return STD_LOW;
 		}
 	else {

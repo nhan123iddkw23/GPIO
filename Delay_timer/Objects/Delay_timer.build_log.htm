@@ -22,26 +22,42 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\Automative\STM32\GPIO\Delay_timer\Delay_timer.uvprojx
-Project File Date:  06/06/2023
+Project File Date:  06/07/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-assembling startup_stm32f10x_md.s...
-compiling main.c...
-main.c(94): warning:  #1-D: last line of file ends without a newline
-  			
-main.c: 1 warning, 0 errors
-compiling misc.c...
-compiling stm32f10x_gpio.c...
 compiling stm32f10x_flash.c...
-compiling system_stm32f10x.c...
+compiling main.c...
+..\Delay_timer\delay.h(4): warning:  #1295-D: Deprecated declaration Init_TIMER - give arg types
+  void Init_TIMER();
+..\Delay_timer\delay.h(5): warning:  #1295-D: Deprecated declaration Delay_1ms - give arg types
+  void Delay_1ms();
+..\Delay_timer\delay.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c(73): warning:  #1-D: last line of file ends without a newline
+  			
+main.c: 4 warnings, 0 errors
+compiling stm32f10x_gpio.c...
+compiling delay.c...
+..\Delay_timer\delay.h(4): warning:  #1295-D: Deprecated declaration Init_TIMER - give arg types
+  void Init_TIMER();
+..\Delay_timer\delay.h(5): warning:  #1295-D: Deprecated declaration Delay_1ms - give arg types
+  void Delay_1ms();
+..\Delay_timer\delay.h(9): warning:  #1-D: last line of file ends without a newline
+  #endif
+delay.c(23): warning:  #1-D: last line of file ends without a newline
+  			}
+delay.c: 4 warnings, 0 errors
+compiling misc.c...
 compiling stm32f10x_rcc.c...
 compiling stm32f10x_tim.c...
+assembling startup_stm32f10x_md.s...
+compiling system_stm32f10x.c...
 linking...
 Program Size: Code=1816 RO-data=252 RW-data=0 ZI-data=1632  
 FromELF: creating hex file...
-".\Objects\Delay_timer.axf" - 0 Error(s), 1 Warning(s).
+".\Objects\Delay_timer.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -80,19 +96,19 @@ Package Vendor: Keil
       Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: Keil::Device:StdPeriph Drivers:Flash:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_flash.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_flash.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_flash.c
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
       Include file:  Device\StdPeriph_Driver\inc\misc.h
       Source file:   Device\StdPeriph_Driver\src\misc.c
-      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
@@ -101,7 +117,7 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

@@ -1,3 +1,9 @@
+/*
+* File: dio.h
+* Author: Hoang Minh Nhan
+* Date: 29/05/2023
+* Description: Day la file .h
+*/
 #ifndef __DIO_H
 #define __DIO_H
 #include <stm32f10x.h>
@@ -37,14 +43,14 @@ typedef enum{
 	DIO_CHANNEL_PC13,
 	DIO_CHANNEL_PC14,
 	DIO_CHANNEL_PC15
-  }Dio_ChannelType;
+ }Dio_ChannelType; // Dinh nghia cac chan cua STM32F103C8T6
 
 typedef enum{
 	STD_HIGH, // 5v-3.3v
 	STD_LOW // 0v
-	}Dio_LevelType;
+}Dio_LevelType; // Dinh nghia cac muc logic HIGH va LOW cua chan
 
-void Dio_WriteChannel (Dio_ChannelType ChannelId,Dio_LevelType Level);
+void Dio_WriteChannel (Dio_ChannelType ChannelId,Dio_LevelType Level); 
 	
 Dio_LevelType Dio_ReadChannel (Dio_ChannelType ChannelId);
 

@@ -1,5 +1,6 @@
 --cpu Cortex-M3
 ".\objects\main.o"
+".\objects\dio.o"
 ".\objects\basicmathfunctions.o"
 ".\objects\basicmathfunctionsf16.o"
 ".\objects\bayesfunctions.o"

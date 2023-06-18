@@ -57,7 +57,7 @@ int main() {
 			GPIO_ResetBits(GPIOB,GPIO_Pin_5);
 			GPIO_ResetBits(GPIOB,GPIO_Pin_6);
 		   GPIO_ResetBits(GPIOB,GPIO_Pin_7);
-	    GPIO_ResetBits(GPIOB,GPIO_Pin_8);
+	        GPIO_ResetBits(GPIOB,GPIO_Pin_8);
 			GPIO_ResetBits(GPIOB,GPIO_Pin_9);
 		   Delay_ms(1000);
 			}

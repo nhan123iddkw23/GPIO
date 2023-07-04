@@ -31,6 +31,13 @@ typedef enum{
 	 DIO_CHANNEL_PA6,
 	 DIO_CHANNEL_PA7,
 	 DIO_CHANNEL_PA8,
+	 DIO_CHANNEL_PA9,
+	 DIO_CHANNEL_PA10,
+	 DIO_CHANNEL_PA11,
+	 DIO_CHANNEL_PA12,
+	 DIO_CHANNEL_PA13,
+	 DIO_CHANNEL_PA14,
+	 DIO_CHANNEL_PA15,
 	 DIO_CHANNEL_PB0,
 	 DIO_CHANNEL_PB1,
 	 DIO_CHANNEL_PB2,
@@ -39,7 +46,17 @@ typedef enum{
 	 DIO_CHANNEL_PB5,
 	 DIO_CHANNEL_PB6,
 	 DIO_CHANNEL_PB7,
-	 DIO_CHANNEL_PB8
+	 DIO_CHANNEL_PB8,
+	 DIO_CHANNEL_PB9,
+	 DIO_CHANNEL_PB10,
+	 DIO_CHANNEL_PB11,
+	 DIO_CHANNEL_PB12,
+	 DIO_CHANNEL_PB13,
+	 DIO_CHANNEL_PB14,
+	 DIO_CHANNEL_PB15,
+	 DIO_CHANNEL_PC13,
+	 DIO_CHANNEL_PC14,
+	 DIO_CHANNEL_PC15
 	}Dio_ChannelType ;
 
 typedef enum{
@@ -49,22 +66,13 @@ typedef enum{
 	
 typedef enum{
 	PortA,
-	PortB
+	PortB,
+	PortC
 }Dio_PortType;
 
-typedef enum{
-  KHONG,
-	MOT,
-	HAI,
-	BA,	
-	BON,
-	NAM,
-	SAU,
-	BAY,
-	TAM,
-	CHIN
+typedef struct{
+	uint16_t bit_16;
 }Dio_PortLevelType;
-
 
 
 void Dio_WriteChannel (Dio_ChannelType ChannelId,Dio_LevelType Level);
@@ -72,74 +80,7 @@ Dio_LevelType Dio_ReadChannel (Dio_ChannelType ChannelId);
 void Dio_WritePort (Dio_PortType PortId,Dio_PortLevelType Level);
 Dio_PortLevelType Dio_ReadPort (Dio_PortType PortId);
 
-int main() {
-		  config();
-	    uint8_t dem = 0;
-   while(1) {
-		if(Dio_ReadChannel(DIO_CHANNEL_PB0) == STD_LOW) {
-	     while(Dio_ReadChannel(DIO_CHANNEL_PB0) == STD_LOW);
-			if(dem==10) {
-				dem=0;
-				}
-			switch(dem) {
-				case 0: {
-				Dio_WritePort(PortA,KHONG);
-		      delay();
-					break;
-				}
-			  case 1: {
-				Dio_WritePort(PortA,MOT);
-					delay();
-					break;
-				}
-			  case 2:  {
-				Dio_WritePort(PortA,HAI);
-					delay();
-					break;
-				}
-			  case 3: {
-				Dio_WritePort(PortA,BA);
-				delay();
-					break;
-				}
-			  case 4: {
-				Dio_WritePort(PortA,BON);
-					delay();
-					break;
-				}
-				case 5:  {
-				Dio_WritePort(PortA,NAM);
-					delay();
-					break;
-				}
-			  case 6: {
-				Dio_WritePort(PortA,SAU);
-					delay();
-					break;
-				}
-			  case 7: {
-		   Dio_WritePort(PortA,BAY);
-					delay();
-					break;
-				}
-			  case 8: {
-		    Dio_WritePort(PortA,TAM);
-					delay();
-					break;
-				}
-			  case 9: {
-		   Dio_WritePort(PortA,CHIN);
-					delay();
-					break;
-				}
-				}		
-      dem++;
-      if(dem == 10) {
-          dem = 0;
-}				
-				}
-	 }     
-}
+
 	 
 void Dio_WriteChannel(Dio_ChannelType ChannelId,Dio_LevelType Level) {
 	   GPIO_TypeDef * gpioPort;
@@ -352,45 +293,18 @@ void Dio_WritePort (Dio_PortType PortId,Dio_PortLevelType Level){
 		 switch(PortId) {
 			 case PortA: {
 				 gpioPort = GPIOA;
+				 GPIO_Write(GPIOA,Level.bit_16);
 				 break;
 				 }
 			 case PortB: {
 				 gpioPort = GPIOB;
+				 GPIO_Write(GPIOB,Level.bit_16);
 				 break;
 				 }
 			 }
-		 if(Level == KHONG) {
-			 GPIO_Write(gpioPort,0x3F);
-			 }
-		 else if(Level == MOT) {
-			 GPIO_Write(gpioPort,0x06);
-			 }
-		 else if (Level == HAI) {
-			 GPIO_Write(gpioPort,0X5B);
-			 }
-		 else if (Level == BA) {
-			 GPIO_Write(gpioPort,0X4F);
-			 }
-		 else if (Level == BON) {
-			 GPIO_Write(gpioPort,0X66);
-			 }
-		 else if (Level == NAM) {
-			 GPIO_Write(gpioPort,0X6D);
-			 }
-		 else if (Level == SAU) {
-			 GPIO_Write(gpioPort,0X7D);
-			 }
-		 else if (Level == BAY) {
-			 GPIO_Write(gpioPort,0X07);
-			 }
-		 else if (Level == TAM) {
-			 GPIO_Write(gpioPort,0X7F);
-			 }
-		 else if (Level == CHIN) {
-			 GPIO_Write(gpioPort,0X6F);
-			 }
 		 }
-
 		 
-	  
+
+
+
 	 

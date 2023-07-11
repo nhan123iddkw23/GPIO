@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\SPI_Autosar;..\SPI_Autosar_Master</IncludePath>
+              <IncludePath>..\SPI_Autosar;..\SPI_Autosar_Master;..\SPI_Autosar_Master;..\SPI_Autosar_Master</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -391,6 +391,16 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>dio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\dio.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi_Autosar.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\spi_Autosar.c</FilePath>
             </File>
           </Files>
         </Group>

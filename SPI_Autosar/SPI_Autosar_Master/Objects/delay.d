@@ -1,5 +1,5 @@
 .\objects\delay.o: delay.c
-.\objects\delay.o: ..\SPI_Autosar\delay.h
+.\objects\delay.o: ..\SPI_Autosar_Master\delay.h
 .\objects\delay.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\Include\stm32f10x.h
 .\objects\delay.o: .\RTE\_Target_1\RTE_Components.h
 .\objects\delay.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm3.h

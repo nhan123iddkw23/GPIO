@@ -27,7 +27,7 @@ void SPIx_Init(void);
 uint8_t SPIx_EnableSlave(void);
 void GPIO_Configuration(void); 
 volatile uint8_t RxIdx = 0;
-char data = 0x00;
+uint8_t  data = 0x00;
 
 void SPI2_IRQHandler(void)
 {

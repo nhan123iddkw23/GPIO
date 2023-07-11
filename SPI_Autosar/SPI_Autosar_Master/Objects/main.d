@@ -14,4 +14,5 @@
 .\objects\main.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_spi.h
 .\objects\main.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\stm32f10x_tim.h
 .\objects\main.o: C:\Users\ADMIN\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.1\Device\StdPeriph_Driver\inc\misc.h
-.\objects\main.o: ..\SPI_Autosar\delay.h
+.\objects\main.o: ..\SPI_Autosar_Master\delay.h
+.\objects\main.o: ..\SPI_Autosar_Master\dio.h

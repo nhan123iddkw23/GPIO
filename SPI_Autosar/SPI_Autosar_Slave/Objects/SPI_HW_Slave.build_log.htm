@@ -17,16 +17,24 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      UL2CM3.DLL V1.162.16.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 D:\Automative\STM32\STM32F103C8T6\SPI_Autosar\SPI_Autosar_Slave\SPI_Autosar_Slave.uvprojx
-Project File Date:  06/24/2023
+Project File Date:  07/07/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
+compiling main1.c...
+delay.h(10): warning:  #1295-D: Deprecated declaration Init_TIMER - give arg types
+  void Init_TIMER();
+delay.h(11): warning:  #1295-D: Deprecated declaration Delay_1ms - give arg types
+  void Delay_1ms();
+delay.h(15): warning:  #1-D: last line of file ends without a newline
+  #endif
+main1.c: 3 warnings, 0 errors
 compiling delay.c...
 ..\SPI_Autosar_Slave\delay.h(10): warning:  #1295-D: Deprecated declaration Init_TIMER - give arg types
   void Init_TIMER();
@@ -37,37 +45,18 @@ compiling delay.c...
 delay.c(54): warning:  #1-D: last line of file ends without a newline
   			}
 delay.c: 4 warnings, 0 errors
+compiling stm32f10x_exti.c...
 compiling misc.c...
-compiling stm32f10x_gpio.c...
-compiling main.c...
-..\SPI_Autosar_Slave\delay.h(10): warning:  #1295-D: Deprecated declaration Init_TIMER - give arg types
-  void Init_TIMER();
-..\SPI_Autosar_Slave\delay.h(11): warning:  #1295-D: Deprecated declaration Delay_1ms - give arg types
-  void Delay_1ms();
-..\SPI_Autosar_Slave\delay.h(15): warning:  #1-D: last line of file ends without a newline
-  #endif
-main.c(87): warning:  #167-D: argument of type "Spi_ConfigType **" is incompatible with parameter of type "SPI_InitTypeDef *"
-  	  SPI_Init(SPI2,&ConfigPtr);
-main.c(605): warning:  #111-D: statement is unreachable
-  			break;
-main.c(614): warning:  #513-D: a value of type "uint16_t" cannot be assigned to an entity of type "Spi_DataBufferType *"
-  				DataBufferPointer = SPI_I2S_ReceiveData(SPI2);
-main.c(616): warning:  #111-D: statement is unreachable
-  				break;
-main.c(610): warning:  #550-D: parameter "DataBufferPointer"  was set but never used
-  Std_ReturnType Spi_ReadIB ( Spi_ChannelType Channel, Spi_DataBufferType* DataBufferPointer) {
-main.c(637): warning:  #1-D: last line of file ends without a newline
-  	
-main.c: 9 warnings, 0 errors
 compiling stm32f10x_spi.c...
+compiling stm32f10x_gpio.c...
 compiling stm32f10x_rcc.c...
 assembling startup_stm32f10x_md.s...
-compiling stm32f10x_tim.c...
 compiling system_stm32f10x.c...
+compiling stm32f10x_tim.c...
 linking...
-Program Size: Code=2084 RO-data=268 RW-data=4 ZI-data=1636  
+Program Size: Code=1228 RO-data=268 RW-data=4 ZI-data=1636  
 FromELF: creating hex file...
-".\Objects\SPI_Autosar_Slave.axf" - 0 Error(s), 13 Warning(s).
+".\Objects\SPI_HW_Slave.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -82,6 +71,7 @@ Package Vendor: Keil
                 Keil.STM32F1xx_DFP.2.4.1
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
    * Component: Startup Version: 1.0.0
+   * Component: EXTI Version: 3.6.0
    * Component: Framework Version: 3.6.0
    * Component: GPIO Version: 3.6.0
    * Component: RCC Version: 3.6.0
@@ -101,16 +91,20 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\system_stm32f10x.c
+      Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
-      Include file:  RTE_Driver\Config\RTE_Device.h
+
+   * Component: Keil::Device:StdPeriph Drivers:EXTI:3.6.0
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
 
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.6.0
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Include file:  Device\StdPeriph_Driver\inc\misc.h
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
       Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.6.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
@@ -121,13 +115,13 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
 
    * Component: Keil::Device:StdPeriph Drivers:SPI:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
 
    * Component: Keil::Device:StdPeriph Drivers:TIM:3.6.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_tim.h
-Build Time Elapsed:  00:00:01
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

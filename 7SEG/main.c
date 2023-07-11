@@ -8,13 +8,14 @@ void config() {
 	   LED7.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;
 	   LED7.GPIO_Speed = GPIO_Speed_2MHz;
 	   GPIO_Init(GPIOA,&LED7);
-	 RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+	   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	   GPIO_InitTypeDef BUTTON;
 	   BUTTON.GPIO_Mode = GPIO_Mode_IPU;
 	   BUTTON.GPIO_Pin = GPIO_Pin_0;
 	   BUTTON.GPIO_Speed = GPIO_Speed_2MHz;
 	   GPIO_Init(GPIOB,&BUTTON);
 	 }
+
 void delay() {
 	  for(uint32_t i = 0;i<1000000;i++){
 			for(uint64_t j = 0;i<5000000;i++);

@@ -27,14 +27,17 @@ void SPIx_Init(void);
 uint8_t SPIx_EnableSlave(void);
 void GPIO_Configuration(void); 
 volatile uint8_t RxIdx = 0;
-uint8_t  data = 0x00;
+volatile uint8_t  data[4]={0x00,0x00,0x00,0x00};
 
 void SPI2_IRQHandler(void)
 {
-	if (SPI_I2S_GetITStatus(SPIx, SPI_I2S_IT_RXNE) != RESET)
+	if (SPI_I2S_GetITStatus(SPIx, SPI_I2S_IT_RXNE) == SET)
 	{
-		RxIdx++;
-		data = SPI_I2S_ReceiveData(SPIx);		
+		data[RxIdx] = SPI_I2S_ReceiveData(SPIx);
+    RxIdx++;		
+		if(RxIdx>3) {
+			RxIdx = 0;
+			}
 	}
 }
 
@@ -110,7 +113,6 @@ void SPIx_Init()
     SPI_InitStruct.SPI_NSS = SPI_NSS_Soft;
     SPI_Init(SPIx, &SPI_InitStruct); 
     SPI_Cmd(SPIx, ENABLE);
-		
     SPI_I2S_ITConfig(SPIx, SPI_I2S_IT_RXNE, ENABLE);
 }
 

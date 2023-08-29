@@ -139,7 +139,7 @@ Std_ReturnType Spi_WriteIB (Spi_ChannelType Channel, Spi_DataBufferType* DataBuf
 				for(int i = 0; i<sizeof(DataBufferPtr); i++){
 		    while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_TXE) == RESET);
 	      SPI_I2S_SendData(SPI2,*DataBufferPtr++);
-	      //while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_BSY) == RESET);
+	      while(SPI_I2S_GetFlagStatus(SPI2,SPI_I2S_FLAG_BSY) == RESET);
 				}
 		    Dio_WriteChannel(DIO_CHANNEL_PB12,STD_HIGH); 
 			return E_OK;
@@ -180,14 +180,12 @@ int main() {
 	   while(1) {
 			if(Spi_WriteIB(spi2,data) == E_OK) {
 				config_GPIOC();
-				while(1) {
 				Dio_WriteChannel(DIO_CHANNEL_PC13,STD_LOW);
-				Delay_ms(200);
+				Delay_ms(1000);
 				Dio_WriteChannel(DIO_CHANNEL_PC13,STD_HIGH);
 				Delay_ms(200);
-				}
 		 }
 	}
-		 }
+}
 
 	
